@@ -10,29 +10,38 @@ raiz.iconphoto(False,img)
 #frame
 myframe = Frame(raiz)
 myframe.pack(fill=None, expand=False) #se empaqueta el frame dentro de la raiz
-myframe.config(bg="blue")
 myframe.config(width=700, height=500)
 #imagen principal
 miImagen = PhotoImage(file='C:\\Users\\BetinBracamontes\\OneDrive - Universidad del Magdalena\\2022\\PYTHON\\Sistema FV\\solar.png')
-Label(myframe,image=miImagen).place(x=340,y=20)
+Label(myframe,image=miImagen).grid(row=0,column=0,padx=10,pady=10,columnspan=2)
 #E requerida
-etiqueta1 = Label(myframe,text="Energía requerida (Wh)")
-etiqueta1.config(fg="black",font=("Cortana",12))
-etiqueta1.place(x=180,y=100)
+etiqueta1 = Label(myframe,text="Energía total requerida (Wh)")
+etiqueta1.config(fg="black",font=("Cortana",12),justify="left")
+etiqueta1.grid(row=1,column=0,padx=10,pady=10,sticky="e")
 entrada1 = Entry(myframe)
-entrada1.config(justify="center")
-entrada1.place(x=360,y=100)
+entrada1.grid(row=1,column=1,padx=10,pady=10)
 #HSP
-etiqueta2 = Label(myframe,text="HSP(hora solar pico)")
-etiqueta2.config(fg="black",font=("Cortana",12))
-etiqueta2.place(x=180,y=150)
+etiqueta2 = Label(myframe,text="HSP (horas)")
+etiqueta2.config(fg="black",font=("Cortana",12),justify="left")
+etiqueta2.grid(row=2,column=0,padx=10,pady=10,sticky="e")
 entrada2 = Entry(myframe)
-entrada2.config(justify="center")
-entrada2.place(x=360,y=150)
+entrada2.grid(row=2,column=1,padx=10,pady=10)
+#Potencia Modulo Solar
+etiqueta3 = Label(myframe,text="Potencia módulo (w)")
+etiqueta3.config(fg="black",font=("Cortana",12),justify="left")
+etiqueta3.grid(row=3,column=0,padx=10,pady=10,sticky="e")
+entrada3 = Entry(myframe)
+entrada3.grid(row=3,column=1,padx=10,pady=10)
+#precio módulo solar
+etiqueta4 = Label(myframe,text="Precio módulo ($)")
+etiqueta4.config(fg="black",font=("Cortana",12),justify="left")
+etiqueta4.grid(row=4,column=0,padx=10,pady=10,sticky="e")
+entrada4 = Entry(myframe)
+entrada4.grid(row=4,column=1,padx=10,pady=10)
 #button
 boton = Button(myframe,text="Calcular")
 boton.config(fg="black")
-boton.place(x=330,y=190)
+boton.grid(row=5,column=0,padx=10,pady=10,columnspan=2)
 
 
 # consumo_Energia = int(input("Ingrese la energía que requiere para su sistema solar (Wh): "))
