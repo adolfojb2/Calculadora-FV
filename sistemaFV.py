@@ -1,6 +1,8 @@
+from distutils.cmd import Command
 from distutils.command.config import config
 from math import ceil
 from tkinter import *
+from tkinter import messagebox
 #raiz
 raiz = Tk()
 raiz.title("Sistema FV")
@@ -15,33 +17,51 @@ myframe.config(width=700, height=500)
 miImagen = PhotoImage(file='C:\\Users\\BetinBracamontes\\OneDrive - Universidad del Magdalena\\2022\\PYTHON\\Sistema FV\\solar.png')
 Label(myframe,image=miImagen).grid(row=0,column=0,padx=10,pady=10,columnspan=2)
 #E requerida
+
 etiqueta1 = Label(myframe,text="Energía total requerida (Wh)")
 etiqueta1.config(fg="black",font=("Cortana",12),justify="left")
 etiqueta1.grid(row=1,column=0,padx=10,pady=10,sticky="e")
-entrada1 = Entry(myframe)
+consumo_Energia = StringVar()
+entrada1 = Entry(myframe, textvariable=consumo_Energia) #se asocia la variable con el entry
 entrada1.grid(row=1,column=1,padx=10,pady=10)
 #HSP
+
 etiqueta2 = Label(myframe,text="HSP (horas)")
 etiqueta2.config(fg="black",font=("Cortana",12),justify="left")
 etiqueta2.grid(row=2,column=0,padx=10,pady=10,sticky="e")
-entrada2 = Entry(myframe)
+hsp = StringVar()
+entrada2 = Entry(myframe, textvariable=hsp)
 entrada2.grid(row=2,column=1,padx=10,pady=10)
 #Potencia Modulo Solar
 etiqueta3 = Label(myframe,text="Potencia módulo (w)")
 etiqueta3.config(fg="black",font=("Cortana",12),justify="left")
 etiqueta3.grid(row=3,column=0,padx=10,pady=10,sticky="e")
-entrada3 = Entry(myframe)
+wp = StringVar()
+entrada3 = Entry(myframe,textvariable=wp)
 entrada3.grid(row=3,column=1,padx=10,pady=10)
 #precio módulo solar
 etiqueta4 = Label(myframe,text="Precio módulo ($)")
 etiqueta4.config(fg="black",font=("Cortana",12),justify="left")
 etiqueta4.grid(row=4,column=0,padx=10,pady=10,sticky="e")
-entrada4 = Entry(myframe)
+price = StringVar()
+entrada4 = Entry(myframe,textvariable=price)
 entrada4.grid(row=4,column=1,padx=10,pady=10)
+#función del botón
+def calcular():
+    consumo_Energia = int(entrada1.get())
+    hsp = int(entrada2.get())
+    wp = int(entrada3.get())
+    price = int(entrada4.get())
+    num_modulos = ceil((consumo_Energia*1.3)/(wp*hsp))
+    costo_modulos = num_modulos * price
+    messagebox.showinfo("Resultado",f"Para su requerimiento se necesitan {num_modulos} módulos solares de {wp} W y estos tienen un costo total de ${costo_modulos}")
+
 #button
-boton = Button(myframe,text="Calcular")
+boton = Button(myframe,text="Calcular",command=calcular)
 boton.config(fg="black")
 boton.grid(row=5,column=0,padx=10,pady=10,columnspan=2)
+
+
 
 
 # consumo_Energia = int(input("Ingrese la energía que requiere para su sistema solar (Wh): "))
