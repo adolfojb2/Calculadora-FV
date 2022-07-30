@@ -3,7 +3,9 @@ import tkinter
 #raiz
 raiz = tkinter.Tk()
 raiz.title("Sistema FV")
-raiz.config(width="800",height="500")
+raiz.geometry("700x500")
+raiz.resizable(0,0)
+raiz.config(bg="black")
 #frame
 frame = tkinter.Frame(raiz)
 frame.pack(fill="both",expand="True") #se empaqueta el frame dentro de la raiz
