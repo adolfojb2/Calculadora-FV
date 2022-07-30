@@ -12,8 +12,9 @@ myframe = Frame(raiz)
 myframe.pack(fill=None, expand=False) #se empaqueta el frame dentro de la raiz
 myframe.config(bg="blue")
 myframe.config(width=700, height=500)
-
-
+#imagen principal
+miImagen = PhotoImage(file='C:\\Users\\BetinBracamontes\\OneDrive - Universidad del Magdalena\\2022\\PYTHON\\Sistema FV\\solar.png')
+Label(myframe,image=miImagen).place(x=340,y=20)
 #E requerida
 etiqueta1 = Label(myframe,text="Energía requerida (Wh)")
 etiqueta1.config(fg="black",font=("Cortana",12))
